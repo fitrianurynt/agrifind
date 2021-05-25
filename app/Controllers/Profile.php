@@ -40,6 +40,13 @@ class Profile extends BaseController
     $skill = $this->skillModel->where('user_id', $session_id)->findAll();
     $competition = $this->competitionModel->where('user_id', $session_id)->findAll();
 
+    $competition_rank = ["1st", "2nd", "3rd", "Favorite", "Honorable Mention", "Participate", "Other"];
+    foreach ($competition_rank as $c){
+      $query = $this->competitionModel->where('user_id', $session_id)->where('rank', $c)->findAll();
+      $rank[] = sizeof($query);
+      
+    }
+
     $username = $user['username'];
 
     $data = [
@@ -47,7 +54,8 @@ class Profile extends BaseController
       'user' => $user,
       'general' => $general,
       'skill' => $skill,
-      'competition' => $competition
+      'competition' => $competition,
+      'rank' => $rank
     ];
 
     return view('/profile/index', $data);
@@ -70,6 +78,12 @@ class Profile extends BaseController
     $follower_id = ['follower_id' => $session_id, 'following_id' => $id];
     $follow = $this->followModel->where($follower_id)->first();
 
+    $competition_rank = ["1st", "2nd", "3rd", "Favorite", "Honorable Mention", "Participate", "Other"];
+    foreach ($competition_rank as $c){
+      $query = $this->competitionModel->where('user_id', $id)->where('rank', $c)->findAll();
+      $rank[] = sizeof($query);
+    }
+
     // $username = $user['username'];
     $firstname = explode(' ', $user['name'])[0];
 
@@ -79,6 +93,7 @@ class Profile extends BaseController
       'general' => $general,
       'skill' => $skill,
       'competition' => $competition,
+      'rank' => $rank,
       'follow' => $follow
     ];
 

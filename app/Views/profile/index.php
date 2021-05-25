@@ -133,19 +133,22 @@
 
     <div class="col-3">
       <div class="card">
-        <img src="..." class="card-img-top" alt="...">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h3 class="card-title">Achievement</h3>
+          <p class="card-text">Life long goals</p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">An item</li>
-          <li class="list-group-item">A second item</li>
-          <li class="list-group-item">A third item</li>
+          <?php $competition_rank = ["First", "Second", "Third", "Favorite", "Honorable Mention", "Participate", "Other"];
+          $i = 0 ?>
+          <?php foreach ($competition_rank as $c) : ?>
+            <?php if ($rank[$i] != 0) : ?>
+              <li class="list-group-item d-flex justify-content-between align-items-center"><?= $c; ?> <span class="badge bg-primary rounded-pill"><?= $rank[$i]; ?></span></li>
+            <?php endif; ?>
+            <?php $i++ ?>
+          <?php endforeach; ?>
         </ul>
         <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
         </div>
       </div>
     </div>
