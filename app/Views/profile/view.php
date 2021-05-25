@@ -10,7 +10,7 @@
       <?php if ($user['availability'] == 'Available') : ?>
         <p class="badge bg-success"><?= $user['availability']; ?></p>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#message">
+        <button type="button" class="btn bg-dark text-light" data-bs-toggle="modal" data-bs-target="#message">
           Message
         </button>
       <?php elseif (($user['availability'] == 'Unavailable')) : ?>
@@ -20,17 +20,17 @@
       <?php endif; ?>
 
       <?php if ($user['cv'] != '') : ?>
-        <a class="btn btn-success" href="/docs/cv/<?= $user['cv'] ?>" target="_blank">CV</a>
+        <a class="btn btn-primary" href="/docs/cv/<?= $user['cv'] ?>" target="_blank">CV</a>
       <?php endif; ?>
 
       <?php if (!$follow) : ?>
-        <a class="btn btn-success" href="/profile/follow/<?= $user['id']; ?>">Follow</a>
+        <a class="btn btn-success text-right" href="/profile/follow/<?= $user['id']; ?>">Follow</a>
       <?php else : ?>
-        <a class="btn btn-success" href="/profile/unfollow/<?= $user['id']; ?>">Unfollow</a>
+        <a class="btn btn-success text-right" href="/profile/unfollow/<?= $user['id']; ?>">Following</a>
       <?php endif; ?>
 
 
-      <br>
+      <br><br>
 
       <img class="mb-3 rounded-circle" width="200px" src="/img/profile/<?= $user['avatar']; ?>" alt="" style="  width: 100px;
         height: 100px;
@@ -44,7 +44,9 @@
         <li>Name : <?= $user['name']; ?></li>
         <li>Username : <?= $user['username']; ?></li>
         <li>Email : <?= $user['email']; ?></li>
+        <li>NIM : <?= $user['nim']; ?></li>
         <li>Department : <?= $user['department']; ?></li>
+        <li>Batch : <?= $user['batch']; ?></li>
       </ul>
 
       <h2>About Me</h2>
@@ -69,7 +71,7 @@
         </thead>
         <tbody>
           <?php $i = 1 ?>
-          <?php foreach ($skill as $s) : ?>
+          <?php foreach (array_reverse($skill) as $s) : ?>
             <tr>
               <!-- <th scope="row"><?= $i++; ?></th> -->
               <td><?= $s['name']; ?></td>
@@ -123,7 +125,7 @@
         </thead>
         <tbody>
           <?php $i = 1 ?>
-          <?php foreach ($competition as $s) : ?>
+          <?php foreach (array_reverse($competition) as $s) : ?>
             <tr>
               <th scope="row"><?= $i++; ?></th>
               <td><?= $s['name']; ?></td>
@@ -139,11 +141,11 @@
     </div>
 
     <div class="col-3">
-      <div class="card">
+      <div class="card border-success">
         <!-- <img src="..." class="card-img-top" alt="..."> -->
-        <div class="card-body">
-          <h3 class="card-title">Achievement</h3>
-          <p class="card-text">Life long goals</p>
+        <div class="card-body text-white bg-success">
+          <h3 class="card-title ">Achievement</h3>
+          <p class="card-text">Life long goals ❤</p>
         </div>
         <ul class="list-group list-group-flush">
           <?php $competition_rank = ["First", "Second", "Third", "Favorite", "Honorable Mention", "Participate", "Other"];

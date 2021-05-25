@@ -53,6 +53,8 @@ class Login extends BaseController
     //set session
     $session = \Config\Services::session();
     $session->set(['id' => $id]);
+    $session->set(['avatar' => $user['avatar']]);
+    $session->set(['username' => $user['username']]);
 
     return redirect()->to("/profile/index/$id");
   }

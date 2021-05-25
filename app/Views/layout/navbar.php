@@ -19,10 +19,28 @@
 
 
       </div>
-      <div class="navbar-nav ms-auto">
+      <!-- <div class="navbar-nav ms-auto">
         <a class="btn btn-secondary ml-2 mr-2" href="/setting">Setting</a>
         <a class="btn btn-secondary ml-2 mr-2" href="/message">Message</a>
         <a class="nav-link" href="/profile/logout">Log Out</a>
+      </div> -->
+
+
+      <div class="dropdown ms-auto">
+        <button class="btn btn-secondary dropdown-toggle rounded-pill bg-white text-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <img class="rounded-circle" src="/img/profile/<?= $_SESSION['avatar'] ?>" style="width: 30px;
+                  height: 30px;
+                  background-position: center center;
+                  background-repeat: no-repeat;
+                  object-fit:cover;"><b> <?= $_SESSION['username']; ?></b>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="/profile">Profile</a></li>
+          <li><a class="dropdown-item" href="/setting">Setting</a></li>
+          <li><a class="dropdown-item" href="/message">Message</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item " href="/profile/logout">Log Out</a></li>
+        </ul>
       </div>
     </div>
     <!-- </div> -->
