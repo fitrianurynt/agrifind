@@ -23,6 +23,11 @@
         <a class="btn btn-success" href="/docs/cv/<?= $user['cv'] ?>" target="_blank">CV</a>
       <?php endif; ?>
 
+      <?php if(!$follow): ?>
+          <a class="btn btn-success" href="/profile/follow/<?= $user['id']; ?>">Follow</a>
+      <?php else: ?>
+          <a class="btn btn-success" href="/profile/unfollow/<?= $user['id']; ?>">Unfollow</a>
+      <?php endif; ?>
 
 
       <br>

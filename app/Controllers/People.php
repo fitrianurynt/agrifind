@@ -13,11 +13,32 @@ class People extends BaseController
 
   public function index()
   {
-    $user = $this->peopleModel->select('id, name, department, nim, avatar, availability')->findAll();
+    // $user = $this->peopleModel->select('id, name, department, nim, avatar, availability')->orderBy('name ASC')->findAll();
+  
+    
+
+    $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1 ;
+
+    $keyword = $this->request->getVar('keyword');
+
+    if($keyword || $keyword!=null){
+      $people = $this->peopleModel->select('id, name, department, nim, avatar, batch, availability')->orderBy('availability ASC, name ASC')->search($keyword);
+
+    } else {
+      $people = $this->peopleModel->select('id, name, department, nim, avatar, batch, availability')->orderBy('availability ASC, name ASC');
+    }
+
+    // d($people);
+
+
+    // $user = $this->peopleModel->select('id, name, department, nim, avatar, availability')->orderBy('name ASC')->paginate(2, 'user');
 
     $data = [
       'title' => "People | Agrifind",
-      'user' => $user
+      'user' => $people->paginate(3, 'user'),
+      'pager' => $this->peopleModel->pager,
+      'currentPage' => $currentPage,
+      'keyword' => $keyword
     ];
 
     return view('/people/index', $data);

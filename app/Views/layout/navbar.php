@@ -11,6 +11,7 @@
         <!-- <a class="nav-link active" aria-current="page" href="/">Home</a> -->
         <a class="nav-link" href="/profile">Profile</a>
         <a class="nav-link" href="/people">People</a>
+        <a class="nav-link" href="/follow">Follow</a>
 
 
         <!-- <a class="nav-link" href="/signup">Sign Up</a>

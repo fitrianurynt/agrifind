@@ -11,6 +11,7 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">From</th>
+              <th scope="col">Subject</th>
               <th scope="col">Message</th>
               <th scope="col">Email</th>
               <th scope="col">Send</th>
@@ -26,7 +27,8 @@
                 <td><?= $j++; ?></td>
                 <td><a href="/profile/view/<?= $sender[$i]->id; ?>"><?= $sender[$i]->name; ?></a></td>
                 <td><?= $message[$i]['subject']; ?></td>
-                <td><?= $sender[$i]->email; ?></td>
+                <td><?= $message[$i]['message']; ?></td>
+                <td><a href="mailto:<?= $sender[$i]->email; ?>"><?= $sender[$i]->email; ?></a></td>
                 <td><?= date('d-M H:i', strtotime($message[$i]['created_at'])) ?></td>
                 <td><a class="btn btn-danger" href="/message/deleteMessage/<?= $message[$i]['id']; ?>">Delete</a></td>
               </tr>

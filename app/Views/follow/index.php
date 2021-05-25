@@ -7,23 +7,23 @@
       <div class="card">
         <img src="/img/people.jpg" class="card-img-top" alt="..." style="object-fit:cover; height: 100px;">
         <div class="card-body">
-          <h1 class="card-title">People</h1>
-          <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis illum aut voluptatum voluptatibus facilis ex libero quae, velit modi itaque.</p>
+          <h1 class="card-title">Follow</h1>
+          <!-- <p class="card-text"></p> -->
         </div>
+        <ul class="list-group list-group-flush">
+          <a href="/follow">
+            <li class="list-group-item active">Following</li>
+          </a>
+          <a href="/follow/follower">
+            <li class="list-group-item">Follower</li>
+          </a>
+
+        </ul>
       </div>
     </div>
-
     <div class="col-10">
 
-      <div class="col-6 ms-auto">
-        <form action="" method="get">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search People..." name="keyword" value="<?= $keyword; ?>">
-            <button class="btn btn-outline-secondary" type="submit" name="submit">Search</button>
-          </div>
-        </form>
-
-      </div>
+      <h1>Following</h1>
 
       <table class="table table-hover">
         <thead>
@@ -31,17 +31,14 @@
             <th scope="col">#</th>
             <th scope="col"></th>
             <th scope="col">Name</th>
-            <th scope="col">NIM</th>
-            <th scope="col">Batch</th>
-            <th scope="col">Department</th>
             <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
 
           <!-- table content -->
-          <?php $i = 1 + (2 * ($currentPage - 1)) ?>
-          <?php foreach ($user as $u) : ?>
+          <?php $i = 1 ?>
+          <?php foreach ($following as $u) : ?>
             <tr onclick="window.location='/profile/view/<?= $u['id']; ?>'">
               <th class="align-middle" scope="row"><?= $i++; ?></th>
               <td class="align-middle"><img src="/img/profile/<?= $u['avatar']; ?>" style="width: 30px;
@@ -51,9 +48,7 @@
                   object-fit:cover;">
               </td>
               <td class="align-middle"><?= $u['name']; ?></td>
-              <td class="align-middle"><?= $u['nim']; ?></td>
-              <td class="align-middle"><?= $u['batch']; ?></td>
-              <td class="align-middle"><?= $u['department']; ?></td>
+
               <td class="align-middle">
                 <?php if ($u['availability'] == 'Available') : ?>
                   <p class="badge bg-success"><?= $u['availability']; ?></p>
@@ -68,8 +63,6 @@
           </tr>
         </tbody>
       </table>
-
-      <?= $pager->simpleLinks('user', 'people_pagination'); ?>
 
 
 

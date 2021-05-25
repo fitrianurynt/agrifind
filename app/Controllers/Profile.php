@@ -7,6 +7,7 @@ use App\Models\GeneralModel;
 use App\Models\CompetitionModel;
 use App\Models\SkillModel;
 use App\Models\MessageModel;
+use App\Models\FollowModel;
 
 class Profile extends BaseController
 {
@@ -15,6 +16,7 @@ class Profile extends BaseController
   protected $competitionModel;
   protected $skillModel;
   protected $messageModel;
+  protected $followModel;
   protected $session;
 
   public function __construct()
@@ -24,6 +26,7 @@ class Profile extends BaseController
     $this->competitionModel = new CompetitionModel();
     $this->skillModel = new SkillModel();
     $this->messageModel = new MessageModel();
+    $this->followModel = new FollowModel();
     $this->session = \Config\Services::session();
   }
 
@@ -64,6 +67,8 @@ class Profile extends BaseController
     $general = $this->generalModel->where('user_id', $id)->first();
     $skill = $this->skillModel->where('user_id', $id)->findAll();
     $competition = $this->competitionModel->where('user_id', $id)->findAll();
+    $follower_id = ['follower_id' => $session_id, 'following_id' => $id];
+    $follow = $this->followModel->where($follower_id)->first();
 
     // $username = $user['username'];
     $firstname = explode(' ', $user['name'])[0];
@@ -73,7 +78,8 @@ class Profile extends BaseController
       'user' => $user,
       'general' => $general,
       'skill' => $skill,
-      'competition' => $competition
+      'competition' => $competition,
+      'follow' => $follow
     ];
 
     return view("/profile/view", $data);
@@ -101,6 +107,29 @@ class Profile extends BaseController
       'subject' => $this->request->getVar('subject'),
       'message' => $this->request->getVar('messageDescription'),
     ]);
+
+    return redirect()->to("/profile/view/$id");
+  }
+
+  public function follow($id)
+  {
+    $session_id = $this->session->get('id');
+
+    $this->followModel->save([
+      'follower_id' => $session_id,
+      'following_id' => $id
+    ]);
+
+    return redirect()->to("/profile/view/$id");
+  }
+
+  public function unfollow($id)
+  {
+    $session_id = $this->session->get('id');
+
+    $follower_id = ['follower_id' => $session_id, 'following_id' => $id];
+
+    $this->followModel->where($follower_id)->delete();
 
     return redirect()->to("/profile/view/$id");
   }
