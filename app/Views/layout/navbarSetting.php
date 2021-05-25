@@ -6,16 +6,16 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/profile/setting/general/<?= $user['id']; ?>">General</a>
+                <a class="nav-link" aria-current="page" href="/setting">General</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/profile/setting/account/<?= $user['id']; ?>">Account</a>
+                <a class="nav-link" href="/setting/account">Account</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/profile/setting/skill/<?= $user['id']; ?>">Skill and Compt.</a>
+                <a class="nav-link" href="/setting/skill">Skill and Compt.</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/profile/setting/delete/<?= $user['id']; ?>">Delete</a>
+                <a class="nav-link" href="/setting/delete">Delete</a>
               </li>
               
             </ul>

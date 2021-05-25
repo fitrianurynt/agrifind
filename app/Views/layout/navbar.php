@@ -19,7 +19,7 @@
 
       </div>
       <div class="navbar-nav ms-auto">
-        <a class="btn btn-secondary ml-2 mr-2" href="/profile/setting/general/<?= $_SESSION['id']; ?>">Setting</a>
+        <a class="btn btn-secondary ml-2 mr-2" href="/setting">Setting</a>
         <a class="btn btn-secondary ml-2 mr-2" href="/message">Message</a>
         <a class="nav-link" href="/profile/logout">Log Out</a>
       </div>
