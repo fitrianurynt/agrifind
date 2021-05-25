@@ -60,6 +60,7 @@
             <th scope="col">Event</th>
             <th scope="col">Field</th>
             <th scope="col">Description</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>

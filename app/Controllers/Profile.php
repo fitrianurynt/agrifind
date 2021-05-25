@@ -128,6 +128,9 @@ class Profile extends BaseController
     $session_id = $this->session->get('id');
 
     $follower_id = ['follower_id' => $session_id, 'following_id' => $id];
+    //get user id from session
+
+    // dd($id, $session_id, $this->request->getVar('subject'), $this->request->getVar('messageDescription'));
 
     $this->followModel->where($follower_id)->delete();
 
