@@ -13,7 +13,7 @@
 
       <h3>Profile</h3>
 
-      <form action="/setting/editGeneral/<?= $user['id']; ?>" method="post" enctype="multipart/form-data">
+      <form action="/setting/editGeneral" method="post" enctype="multipart/form-data">
         <?= csrf_field(); ?>
 
         <input type="hidden" name="id" value="<?= $user['id']; ?>">
@@ -119,6 +119,11 @@
         <div class="mb-3">
           <label for="nim" class="form-label">NIM</label>
           <input name="nim" type="text" class="form-control" id="nim" placeholder="NIM" value="<?= $user['nim'] ?>">
+        </div>
+        
+        <div class="mb-3">
+          <label for="batch" class="form-label">Batch</label>
+          <input name="batch" type="number" min=0 class="form-control" id="batch" placeholder="batch" value="<?= $user['batch'] ?>">
         </div>
 
         <div class="mb-3">

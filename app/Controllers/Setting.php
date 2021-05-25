@@ -174,7 +174,7 @@ class Setting extends BaseController
         ]
       ]
     ])) {
-      return redirect()->to("/setting/general")->withInput();
+      return redirect()->to("/setting")->withInput();
     }
 
     $session_id = $this->session->get('id');
@@ -249,6 +249,7 @@ class Setting extends BaseController
       'name' => $this->request->getVar('name'),
       'email' => $this->request->getVar('email'),
       'nim' => $this->request->getVar('nim'),
+      'batch' => $this->request->getVar('batch'),
       'avatar' => $avatarName,
       'header' => $headerName,
       'cv' => $cvName,

@@ -48,6 +48,15 @@
         </div>
 
         <div class="mb-3">
+          <label for="batch" class="form-label">Batch</label>
+          <input name="batch" type="number" min="0" class="form-control <?= ($validation->hasError('batch') ? 'is-invalid' : ''); ?>" id="batch" placeholder="Batch" value="<?= old('batch'); ?>">
+
+          <div class="invalid-feedback">
+            <?= $validation->getError('batch'); ?>
+          </div>
+        </div>
+
+        <div class="mb-3">
           <label for="department" class="form-label">Department</label>
           <select class="form-select <?= ($validation->hasError('department') ? 'is-invalid' : ''); ?>" aria-label="Default select example" id="department" name="department">
             <option selected disabled>Department</option>

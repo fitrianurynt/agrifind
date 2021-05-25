@@ -67,12 +67,21 @@ class SignUp extends BaseController
           'regex_match' => 'Use apps.ipb.ac.id email only!'
         ]
       ],
+      
+
       'nim' => [
         'rules' => 'required|is_unique[user.nim]|regex_match[/[a-kA-K]+[0-9]{8,20}/]',
         'errors' => [
           'required' => 'NIM is required',
           'is_unique' => 'NIM is taken',
           'regex_match' => 'Not a valid IPB NIM'
+        ]
+      ],
+
+      'batch' => [
+        'rules' => 'required',
+        'errors' => [
+          'required' => 'Batch is required',
         ]
       ],
       'department' => [
@@ -115,6 +124,7 @@ class SignUp extends BaseController
       'email' => $this->request->getVar('email'),
       'nim' => strtoupper($this->request->getVar('nim')),
       'department' => $this->request->getVar('department'),
+      'batch' => $this->request->getVar('batch'),
       'avatar' => 'default.jpg',
       'header' => 'default.jpg',
       'cv' => '',

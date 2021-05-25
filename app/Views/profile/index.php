@@ -35,7 +35,9 @@
         <li>Name : <?= $user['name']; ?></li>
         <li>Username : <?= $user['username']; ?></li>
         <li>Email : <?= $user['email']; ?></li>
+        <li>NIM : <?= $user['nim']; ?></li>
         <li>Department : <?= $user['department']; ?></li>
+        <li>Batch : <?= $user['batch']; ?></li>
       </ul>
 
       <h2 class="mt-4 mb-2">About Me</h2>
