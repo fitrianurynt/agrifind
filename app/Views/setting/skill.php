@@ -36,7 +36,7 @@
               <td><?= $s['name']; ?></td>
               <td><?= $s['level']; ?></td>
               <td><?= $s['description']; ?></td>
-              <td><a href="/profile/deleteSkill/<?= $s['skill_id']; ?>/<?= $user['id']; ?>" class="btn btn-danger">Delete</a></td>
+              <td><a href="/setting/deleteSkill/<?= $s['skill_id']; ?>" class="btn btn-danger">Delete</a></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
@@ -72,7 +72,7 @@
               <td><?= $s['organiser']; ?></td>
               <td><?= $s['field']; ?></td>
               <td><?= $s['description']; ?></td>
-              <td><a href="/profile/deleteCompetition/<?= $s['competition_id']; ?>/<?= $user['id']; ?>" class="btn btn-danger">Delete</a></td>
+              <td><a href="/setting/deleteCompetition/<?= $s['competition_id']; ?>" class="btn btn-danger">Delete</a></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
@@ -90,7 +90,7 @@
         <h5 class="modal-title" id="addSkillLabel">Add Skill</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/profile/addSkill/<?= $user['id']; ?>">
+      <form action="/setting/addSkill">
         <div class="modal-body">
 
 
@@ -137,7 +137,7 @@
         <h5 class="modal-title" id="addCompetitionLabel">Add Competition</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="/profile/addCompetition/<?= $user['id']; ?>">
+      <form action="/setting/addCompetition">
         <div class="modal-body">
 
           <input type="hidden" name="hiddenUserId" value="<?= $user['id']; ?>">

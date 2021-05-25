@@ -13,7 +13,7 @@
 
       <h3>Profile</h3>
 
-      <form action="/profile/editGeneral/<?= $user['id']; ?>" method="post" enctype="multipart/form-data">
+      <form action="/setting/editGeneral/<?= $user['id']; ?>" method="post" enctype="multipart/form-data">
         <?= csrf_field(); ?>
 
         <input type="hidden" name="id" value="<?= $user['id']; ?>">
@@ -43,7 +43,7 @@
           </div>
 
           <div class="col-sm-2">
-            <a href="/profile/removeProfilePicture" class="btn btn-danger">Remove Picture</a>
+            <a href="/setting/removeProfilePicture" class="btn btn-danger">Remove Picture</a>
           </div>
         </div>
 
@@ -67,7 +67,7 @@
           </div>
 
           <div class="col-sm-2">
-            <a href="/profile/removeHeader" class="btn btn-danger">Remove Picture</a>
+            <a href="/setting/removeHeader" class="btn btn-danger">Remove Picture</a>
           </div>
         </div>
 
@@ -92,7 +92,7 @@
           </div>
 
           <div class="col-sm-2">
-            <a href="/profile/removeCV" class="btn btn-danger">Remove CV</a>
+            <a href="/setting/removeCV" class="btn btn-danger">Remove CV</a>
           </div>
         </div>
 

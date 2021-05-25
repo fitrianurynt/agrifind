@@ -49,25 +49,30 @@ class SignUp extends BaseController
         ]
       ],
       'username' => [
-        'rules' => 'required|is_unique[user.username]',
+        'rules' => 'required|is_unique[user.username]|regex_match[/^[a-zA-Z0-9_]{1,}$/]|max_length[20]|min_length[3]',
         'errors' => [
           'required' => 'Username is required',
-          'is_unique' => 'Username is taken'
+          'is_unique' => 'Username is taken',
+          'max_length' => 'Only 20 characters!',
+          'min_length' => 'Minimum 3 characters!',
+          'regex_match' => 'Only letter, number and _'
         ]
       ],
       'email' => [
-        'rules' => 'required|is_unique[user.email]|valid_email',
+        'rules' => 'required|is_unique[user.email]|valid_email|regex_match[/^[a-zA-z0-9]+@apps\.ipb\.ac\.id/]',
         'errors' => [
           'required' => 'Email is required',
           'is_unique' => 'Email is taken',
-          'valid_email' => 'Email is invalid'
+          'valid_email' => 'Email is invalid',
+          'regex_match' => 'Use apps.ipb.ac.id email only!'
         ]
       ],
       'nim' => [
-        'rules' => 'required|is_unique[user.nim]',
+        'rules' => 'required|is_unique[user.nim]|regex_match[/[a-kA-K]+[0-9]{8,20}/]',
         'errors' => [
           'required' => 'NIM is required',
-          'is_unique' => 'NIM is taken'
+          'is_unique' => 'NIM is taken',
+          'regex_match' => 'Not a valid IPB NIM'
         ]
       ],
       'department' => [
