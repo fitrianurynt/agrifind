@@ -8,37 +8,43 @@ use App\Models\ProfileModel;
 class Message extends BaseController
 {
   protected $messageModel;
+  protected $session;
 
   public function __construct()
   {
     $this->messageModel = new MessageModel();
     $this->profileModel = new ProfileModel();
+    $this->session = \Config\Services::session();
   }
 
   public function index()
   {
-    //set session
-    $session = \Config\Services::session();
-
     //get user id from session
-    $session_id = $session->get('id');
-    // check session if user is logged in
+    $session_id = $this->session->get('id');
 
     $messages = $this->messageModel->where('receiver_id', $session_id)->findAll();
+    if(!$messages) $sender = [];
+
     // foreach($messages as $m){
     //   $sender_id = $m['sender_id'];
-    //   $query = $this->profileModel->select('name', 'email')->where('id', $sender_id)->get();
+    //   $query = $this->profileModel->query("SELECT id, name, email FROM user WHERE id= $sender_id");
 
-    //   dd($sender_id, $query);
+    //   $sender[] = $query->getResult()[0];
 
-    //   $sender[] = [$query];
     // }
-    if(!$messages) $sender = [];
-    foreach($messages as $m){
-      $sender_id = $m['sender_id'];
-      $query = $this->profileModel->query("SELECT id, name, email FROM user WHERE id= $sender_id");
 
-      $sender[] = $query->getResult()[0];
+    foreach($messages as $m){
+      $query = $this->profileModel->where('id', $m['sender_id'])->select('id, name, email')->first();
+
+      $sender[] = [
+        'id'=>$query['id'], 
+        'name'=>$query['name'], 
+        'email'=>$query['email'],
+        'subject' =>$m['subject'],
+        'message' => $m['message'],
+        'created_at'=>$m['created_at'],
+        'message_id' =>$m['id']
+      ];
 
     }
 

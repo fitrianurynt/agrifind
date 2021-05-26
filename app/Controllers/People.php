@@ -35,7 +35,7 @@ class People extends BaseController
 
     $data = [
       'title' => "People | Agrifind",
-      'user' => $people->paginate(3, 'user'),
+      'user' => $people->paginate(25, 'user'),
       'pager' => $this->peopleModel->pager,
       'currentPage' => $currentPage,
       'keyword' => $keyword

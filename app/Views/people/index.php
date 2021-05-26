@@ -47,7 +47,7 @@
         <tbody>
 
           <!-- table content -->
-          <?php $i = 1 + (3 * ($currentPage - 1)) ?>
+          <?php $i = 1 + (25 * ($currentPage - 1)) ?>
           <?php foreach ($user as $u) : ?>
             <tr onclick="window.location='/profile/view/<?= $u['id']; ?>'">
               <th class="align-middle" scope="row"><?= $i++; ?></th>

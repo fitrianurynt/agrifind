@@ -21,7 +21,7 @@
               <a class="btn btn-success text-right" href="/profile/unfollow/<?= $user['id']; ?>">Following</a>
             <?php endif; ?>
 
-            <?php if ($user['availability'] == 'Available') : ?>
+            <?php if ($user['availability'] == 'Available' || $user['availability'] == 'Unavailable') : ?>
               <!-- Button trigger modal -->
               <button type="button" class="btn bg-dark text-light" data-bs-toggle="modal" data-bs-target="#message">
                 Message

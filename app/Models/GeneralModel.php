@@ -7,5 +7,5 @@ use CodeIgniter\Model;
 class GeneralModel extends Model
 {
   protected $table          = 'general';
-  protected $allowedFields  = ['about_me', 'phone', 'experience', 'profession'];
+  protected $allowedFields  = ['user_id','about_me', 'phone', 'experience', 'profession'];
 }

@@ -140,6 +140,7 @@ class SignUp extends BaseController
 
     //create new storage in table general for new id
     $this->generalModel->save([
+      'user_id' => $id,
       'about_me' => ''
     ]);
     // //create new storage in table general for new id
