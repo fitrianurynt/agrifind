@@ -5,38 +5,52 @@
   <div class="row mt-5 mb-2">
     <div class="col-9">
 
-      <h1 class="">Profile <?= $user['name']; ?></h1>
+      <div class="row">
+        <div class="col">
+          <h1 class="">Profile <?= $user['name']; ?></h1>
+        </div>
+        <div class="col">
+          <div class="float-end">
+            <?php if ($user['cv'] != '') : ?>
+              <a class="btn btn-primary" href="/docs/cv/<?= $user['cv'] ?>" target="_blank">CV</a>
+            <?php endif; ?>
+
+            <?php if (!$follow) : ?>
+              <a class="btn btn-success text-right" href="/profile/follow/<?= $user['id']; ?>">Follow</a>
+            <?php else : ?>
+              <a class="btn btn-success text-right" href="/profile/unfollow/<?= $user['id']; ?>">Following</a>
+            <?php endif; ?>
+
+            <?php if ($user['availability'] == 'Available') : ?>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn bg-dark text-light" data-bs-toggle="modal" data-bs-target="#message">
+                Message
+              </button>
+            <?php endif; ?>
+          </div>
+
+
+        </div>
+      </div>
 
       <?php if ($user['availability'] == 'Available') : ?>
         <p class="badge bg-success"><?= $user['availability']; ?></p>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn bg-dark text-light" data-bs-toggle="modal" data-bs-target="#message">
-          Message
-        </button>
       <?php elseif (($user['availability'] == 'Unavailable')) : ?>
         <p class="badge bg-danger"><?= $user['availability']; ?></p>
       <?php elseif (($user['availability'] == 'Do Not Disturb')) : ?>
         <p class="badge bg-warning"><?= $user['availability']; ?></p>
       <?php endif; ?>
-
-      <?php if ($user['cv'] != '') : ?>
-        <a class="btn btn-primary" href="/docs/cv/<?= $user['cv'] ?>" target="_blank">CV</a>
-      <?php endif; ?>
-
-      <?php if (!$follow) : ?>
-        <a class="btn btn-success text-right" href="/profile/follow/<?= $user['id']; ?>">Follow</a>
-      <?php else : ?>
-        <a class="btn btn-success text-right" href="/profile/unfollow/<?= $user['id']; ?>">Following</a>
-      <?php endif; ?>
-
-
-      <br><br>
+      <br>
 
       <img class="mb-3 rounded-circle" width="200px" src="/img/profile/<?= $user['avatar']; ?>" alt="" style="  width: 100px;
         height: 100px;
         background-position: center center;
         background-repeat: no-repeat;
         object-fit:cover;">
+
+      <br>
+
+
 
       <h2>Information</h2>
 
@@ -141,7 +155,7 @@
     </div>
 
     <div class="col-3">
-      <div class="card border-success">
+      <div class="card border-success sticky-top" style="top: 2em;">
         <!-- <img src="..." class="card-img-top" alt="..."> -->
         <div class="card-body text-white bg-success">
           <h3 class="card-title ">Achievement</h3>
@@ -199,3 +213,4 @@
 </div>
 
 <?= $this->endSection(); ?>
+

@@ -14,16 +14,23 @@
     </div>
 
     <div class="col-10">
+      <div class="row">
+        <div class="col">
+          <?= $pager->simpleLinks('user', 'people_pagination'); ?>
 
-      <div class="col-6 ms-auto">
-        <form action="" method="get">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search People..." name="keyword" value="<?= $keyword; ?>">
-            <button class="btn btn-outline-secondary" type="submit" name="submit">Search</button>
-          </div>
-        </form>
+        </div>
 
+        <div class="col-6 ms-auto">
+          <form action="" method="get">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search People..." name="keyword" value="<?= $keyword; ?>">
+              <button class="btn btn-secondary" type="submit" name="submit">Search</button>
+            </div>
+          </form>
+
+        </div>
       </div>
+
 
       <table class="table table-hover">
         <thead>
@@ -40,7 +47,7 @@
         <tbody>
 
           <!-- table content -->
-          <?php $i = 1 + (2 * ($currentPage - 1)) ?>
+          <?php $i = 1 + (3 * ($currentPage - 1)) ?>
           <?php foreach ($user as $u) : ?>
             <tr onclick="window.location='/profile/view/<?= $u['id']; ?>'">
               <th class="align-middle" scope="row"><?= $i++; ?></th>
@@ -69,8 +76,7 @@
         </tbody>
       </table>
 
-      <?= $pager->simpleLinks('user', 'people_pagination'); ?>
-
+      
 
 
     </div>
